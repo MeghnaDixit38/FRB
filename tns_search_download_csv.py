@@ -24,14 +24,14 @@ import time
 TNS                  = "www.wis-tns.org"
 url_tns_search       = "https://" + TNS + "/search"
 
-TNS_BOT_ID           = "YOUR_BOT_ID_HERE"
-TNS_BOT_NAME         = "YOUR_BOT_NAME_HERE"
-TNS_API_KEY          = "YOUR_BOT_API_KEY_HERE"
+TNS_BOT_ID           = "158132"
+TNS_BOT_NAME         = "STAR_bot"
+TNS_API_KEY          = "638d880d5c261c9b7c5c70683624ce29ddc435d7"
 
-TNS_UID              = "YOUR_USER_ID"
-TNS_USER_NAME        = "YOUR_USER_NAME"
+TNS_UID              = "3171"
+TNS_USER_NAME        = "Meghna Dixit"
 
-USER_OR_BOT          = "Here put 'user' or 'bot' depending on who is sending requests."
+USER_OR_BOT          = "bot"
 
 # all possible parameters for building TNS search url
 URL_PARAMETERS       = ["discovered_period_value", "discovered_period_units", "unclassified_at", "classified_sne", "include_frb",
@@ -45,11 +45,11 @@ URL_PARAMETERS       = ["discovered_period_value", "discovered_period_units", "u
                         "frb_rm_range_min", "frb_rm_range_max", "frb_snr_range_min", "frb_snr_range_max", "frb_flux_range_min",
                         "frb_flux_range_max", "format", "num_page"]
 
-url_parameters       = {"include_frb" : "1", "at_type[]" : "5", "reporting_groupid[]" : "86", 
-                        "format" : "tsv", "num_page" : "206", "frb_repeat" : }
+url_parameters       = {"include_frb" : "1", "at_type[]" : "5", "reporting_groupid[]" : "86",
+                        "format" : "csv", "num_page" : "100"}
 
 # Merge retrieved entries into single CSV/TSV file (0 --> NO, 1 --> YES)
-MERGE_TO_SINGLE_FILE  = "1"
+MERGE_TO_SINGLE_FILE  = 1
 
 # external http errors
 ext_http_errors       = [403, 500, 503]
@@ -233,6 +233,8 @@ def search_tns():
                 os.rmdir(tns_search_folder_path)
                 print ("Folder /" + tns_search_folder + "/ is removed.\n")
 
+search_tns()
+
 #----------------------------------------------------------------------------------
 """
 # EXAMPLE 1 (for CHIME FRBs, 50 per page)
@@ -245,7 +247,7 @@ url_parameters       = {"include_frb" : "1", "at_type[]" : "5", "reporting_group
 MERGE_TO_SINGLE_FILE = 1
 search_tns()
 """
-
+# "objtype[]" : "FRB", 
 """
 # EXAMPLE 2 (for classified SNe over the last 2 months, 100 per page)
 TNS_UID              = "YOUR_USER_ID"
